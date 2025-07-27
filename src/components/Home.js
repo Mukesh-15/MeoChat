@@ -4,7 +4,7 @@ import ChatList from "./Chatlist";
 import ChatBox from "./Chatbox";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://meochat-backend.onrender.com");
 
 export default function Home() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(() => {
     const fetchAllMsgs = async () => {
       try {
-        const res = await fetch("http://localhost:5000/users/getAllMsgs", {
+        const res = await fetch("https://meochat-backend.onrender.com/users/getAllMsgs", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

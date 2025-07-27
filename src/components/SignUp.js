@@ -13,7 +13,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/Signup`, {
+      const response = await fetch(`https://meochat-backend.onrender.com/Signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

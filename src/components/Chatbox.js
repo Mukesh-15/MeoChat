@@ -10,7 +10,7 @@ const ChatBox = ({ currFrnd, socket }) => {
     const fetchChatHistory = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/users/messages/${currFrnd}`,
+          `https://meochat-backend.onrender.com/users/messages/${currFrnd}`,
           {
             method: "GET",
             headers: {
@@ -59,7 +59,7 @@ const ChatBox = ({ currFrnd, socket }) => {
     if (!msg.trim()) return;
 
     try {
-      const res = await fetch("http://localhost:5000/users/sendMsg", {
+      const res = await fetch("https://meochat-backend.onrender.com/users/sendMsg", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

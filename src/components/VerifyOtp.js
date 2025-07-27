@@ -16,7 +16,7 @@ export default function VerifyOtp({ active }) {
   };
 
   const sendMail = async () => {
-    const response = await fetch(`http://localhost:5000/send-otp`, {
+    const response = await fetch(`https://meochat-backend.onrender.com/send-otp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function VerifyOtp({ active }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const otpResponse = await fetch(`http://localhost:5000/verify-otp`, {
+    const otpResponse = await fetch(`https://meochat-backend.onrender.com/verify-otp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

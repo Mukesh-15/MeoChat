@@ -8,7 +8,7 @@ export default function AddFriends() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:5000/users", {
+        const res = await fetch("https://meochat-backend.onrender.com/users", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export default function AddFriends() {
 
   const sendRequest = async (frndId) => {
     try {
-      const res = await fetch("http://localhost:5000/users/frndrequest", {
+      const res = await fetch("https://meochat-backend.onrender.com/users/frndrequest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
