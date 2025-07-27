@@ -1,0 +1,49 @@
+import React, { useEffect, useState } from "react";
+import Sidebar from "./Sidebar";
+import ChatList from "./Chatlist";
+import ChatBox from "./Chatbox";
+import io from "socket.io-client";
+import { useNavigate } from "react-router-dom";
+const socket = io.connect("http://localhost:5000");
+
+export default function Home() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [navigate]);
+  const [currFrnd, setCurrFrnd] = useState("");
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchAllMsgs = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/users/getAllMsgs", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+        });
+
+        const data = await res.json();
+        setUsers(data);
+        setCurrFrnd(data[0].friendId);
+      } catch (err) {
+        console.error("Error fetching users:", err);
+      }
+    };
+
+    fetchAllMsgs();
+  }, []);
+
+  return (
+    <div className="flex h-screen bg-blue-100">
+      <Sidebar />
+      <ChatList users={users} setCurrFrnd={setCurrFrnd} />
+      <div className="flex flex-col flex-1">
+        <ChatBox currFrnd={currFrnd} socket={socket}/>
+      </div>
+    </div>
+  );
+}
