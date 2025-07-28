@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const ChatBox = ({ currFrnd, socket }) => {
+const ChatBox = ({ currFrnd, socket,frndName }) => {
   const [chatHistory, setChatHistory] = useState([]);
   const [userId, setUserId] = useState("");
   const [roomId, setRoomId] = useState("");
@@ -83,8 +83,8 @@ const ChatBox = ({ currFrnd, socket }) => {
     <div className="flex flex-col h-screen bg-white">
       <div className="flex justify-between items-center px-6 py-4 border-b">
         <div>
-          <h2 className="font-semibold text-gray-800">Meo Chat</h2>
-          <p className="text-sm text-gray-400">32 members, 6 online</p>
+          <h2 className="font-semibold text-gray-800">{frndName}</h2>
+          {/* <p className="text-sm text-gray-400">{`32 members, 6 online`}</p> */}
         </div>
         <div className="flex space-x-4 text-xl text-gray-500">
           <ion-icon name="call-outline"></ion-icon>

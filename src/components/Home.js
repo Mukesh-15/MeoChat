@@ -15,6 +15,7 @@ export default function Home() {
   }, [navigate]);
   const [currFrnd, setCurrFrnd] = useState("");
   const [users, setUsers] = useState([]);
+  const [frndName,setFrndName] = useState("Meo Chat");
   useEffect(() => {
     const fetchAllMsgs = async () => {
       try {
@@ -29,6 +30,7 @@ export default function Home() {
         const data = await res.json();
         setUsers(data);
         setCurrFrnd(data[0].friendId);
+        setFrndName(data[0].username);
       } catch (err) {
         console.error("Error fetching users:", err);
       }
@@ -42,7 +44,7 @@ export default function Home() {
       <Sidebar />
       <ChatList users={users} setCurrFrnd={setCurrFrnd} />
       <div className="flex flex-col flex-1">
-        <ChatBox currFrnd={currFrnd} socket={socket}/>
+        <ChatBox currFrnd={currFrnd} socket={socket}  frndName={frndName}/>
       </div>
     </div>
   );

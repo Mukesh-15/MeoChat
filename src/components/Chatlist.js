@@ -1,5 +1,4 @@
-
-const ChatList = ({ users, setCurrFrnd }) => {
+const ChatList = ({ users, setCurrFrnd, setFrndName }) => {
   return (
     <div className="w-80 bg-white border-r border-gray-200">
       <div className="p-4">
@@ -13,7 +12,10 @@ const ChatList = ({ users, setCurrFrnd }) => {
           <div
             key={idx}
             className="flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer"
-            onClick={() => setCurrFrnd(user.friendId)} 
+            onClick={() => {
+              setCurrFrnd(user.friendId);
+              setFrndName(user.username);
+            }}
           >
             <img
               className="w-10 h-10 rounded-full mr-3"
@@ -38,6 +40,5 @@ const ChatList = ({ users, setCurrFrnd }) => {
     </div>
   );
 };
-
 
 export default ChatList;
