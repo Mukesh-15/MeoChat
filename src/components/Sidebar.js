@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <div className="w-20 bg-white flex flex-col items-center py-6">
       <div className="mb-6">
-        <img className="rounded-full w-10 h-10" src="https://i.pravatar.cc/100" alt="avatar" />
+        <img className="rounded-full w-10 h-10" src={`https://i.pravatar.cc/150?u=${props.id}`} alt="avatar" />
       </div>
       <div className="flex flex-col space-y-6 text-gray-600 text-xl">
         <Link to="/"><ion-icon name="chatbubble-ellipses-outline"></ion-icon></Link>

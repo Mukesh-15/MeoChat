@@ -14,6 +14,7 @@ export default function Home() {
     }
   }, [navigate]);
   const [currFrnd, setCurrFrnd] = useState("");
+  const [id, setId] = useState("100");
   const [users, setUsers] = useState([]);
   const [frndName,setFrndName] = useState("Meo Chat");
   useEffect(() => {
@@ -31,6 +32,7 @@ export default function Home() {
         setUsers(data);
         setCurrFrnd(data[0].friendId);
         setFrndName(data[0].username);
+        setId(data.yourId);
       } catch (err) {
         console.error("Error fetching users:", err);
       }
@@ -41,8 +43,8 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-blue-100">
-      <Sidebar />
-      <ChatList users={users} setCurrFrnd={setCurrFrnd} />
+      <Sidebar id={id}/>
+      <ChatList users={users} setCurrFrnd={setCurrFrnd} setFrndName={setFrndName}/>
       <div className="flex flex-col flex-1">
         <ChatBox currFrnd={currFrnd} socket={socket}  frndName={frndName}/>
       </div>
