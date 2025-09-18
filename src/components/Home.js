@@ -8,15 +8,18 @@ const socket = io.connect("https://meochat-backend.onrender.com");
 
 export default function Home() {
   const navigate = useNavigate();
+  
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
   }, [navigate]);
+
   const [currFrnd, setCurrFrnd] = useState("");
   const [id, setId] = useState("100");
   const [users, setUsers] = useState([]);
   const [frndName,setFrndName] = useState("Meo Chat");
+
   useEffect(() => {
     const fetchAllMsgs = async () => {
       try {
@@ -29,6 +32,7 @@ export default function Home() {
         });
 
         const data = await res.json();
+        console.log(data);
         setUsers(data);
         setCurrFrnd(data[0].friendId);
         setFrndName(data[0].username);

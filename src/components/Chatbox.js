@@ -72,7 +72,6 @@ const ChatBox = ({ currFrnd, socket,frndName }) => {
       });
 
       const data = await res.json();
-      // setChatHistory((prev) => [...prev, data.data]);
       setMsg("");
     } catch (err) {
       console.error("Error sending message:", err);

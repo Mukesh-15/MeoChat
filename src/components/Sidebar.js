@@ -11,6 +11,7 @@ const Sidebar = (props) => {
         <Link to="/addFriends"><ion-icon name="person-add-outline"></ion-icon></Link>
         <ion-icon name="calendar-outline"></ion-icon>
         <ion-icon name="settings-outline"></ion-icon>
+        <Link to="/login"><ion-icon name="log-out-outline"></ion-icon></Link>
       </div>
     </div>
   );
